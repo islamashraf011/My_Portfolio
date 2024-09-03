@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/features/home/presentation/widgets/animated_profile_section.dart';
 import 'home_app_bar.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -9,6 +10,7 @@ class HomeViewBody extends StatelessWidget {
     return ListView(
       children: const [
         HomeAppBar(),
+        AnimatedProfileSection(),
       ],
     );
   }
