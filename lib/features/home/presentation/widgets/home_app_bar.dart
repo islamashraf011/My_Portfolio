@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/app_colors.dart';
-import 'custom_text_button_section.dart';
-import 'image_logo_section.dart';
+import 'custom_text_button_bar.dart';
+import 'image_logo.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
@@ -25,9 +25,9 @@ class HomeAppBar extends StatelessWidget {
           child: const Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              ImageLogoSection(),
+              ImageLogo(),
               Spacer(),
-              CustomTextButtonsSection(),
+              CustomTextButtonsBar(),
             ],
           ),
         ),

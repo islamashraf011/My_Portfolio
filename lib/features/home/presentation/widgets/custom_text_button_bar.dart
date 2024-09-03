@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../../core/components/custom_text_button.dart';
 
-class CustomTextButtonsSection extends StatelessWidget {
-  const CustomTextButtonsSection({super.key});
+class CustomTextButtonsBar extends StatelessWidget {
+  const CustomTextButtonsBar({super.key});
 
   @override
   Widget build(BuildContext context) {
