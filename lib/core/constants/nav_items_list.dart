@@ -13,3 +13,6 @@ const List<IconData> navIcons = [
   Icons.apps_outlined,
   Icons.contact_mail,
 ];
+
+const double kScreenWidth = 690;
+
