@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/app_colors.dart';
-import 'custom_text_button_bar.dart';
+import 'header_desktop.dart';
+import 'header_mobile.dart';
 import 'image_logo.dart';
 
 class HomeAppBar extends StatelessWidget {
@@ -22,12 +23,15 @@ class HomeAppBar extends StatelessWidget {
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.w),
-          child: const Row(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              ImageLogo(),
-              Spacer(),
-              CustomTextButtonsBar(),
+              const ImageLogo(),
+              const Spacer(),
+              if (ScreenUtil().screenWidth <= 690)
+                const HeaderMobile()
+              else
+                const HeaderDesktop()
             ],
           ),
         ),
@@ -35,3 +39,4 @@ class HomeAppBar extends StatelessWidget {
     );
   }
 }
+

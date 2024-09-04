@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../widgets/end_drawer_mobile_widget.dart';
 import '../widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
@@ -7,9 +8,12 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
-        body: HomeViewBody(),
+        endDrawer: ScreenUtil().screenWidth <= 690
+            ? const EndDrawerMobileWidget()
+            : null,
+        body: const HomeViewBody(),
       ),
     );
   }
