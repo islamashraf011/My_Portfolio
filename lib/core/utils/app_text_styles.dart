@@ -56,4 +56,32 @@ abstract class AppTextStyles {
       height: 1.5,
     );
   }
+
+  static textNormal16() {
+    return const TextStyle(
+      fontSize: 16,
+      height: 2,
+      color: Colors.white,
+    );
+  }
+
+  static textBoldColor22() {
+    return const TextStyle(
+      fontSize: 22,
+      fontWeight: FontWeight.bold,
+      color: Color(
+        AppColors.kOrangeColor,
+      ),
+    );
+  }
+
+  static textNormalColor16() {
+    return const TextStyle(
+      fontSize: 16,
+      height: 2,
+      color: Color(
+        AppColors.kOrangeColor,
+      ),
+    );
+  }
 }

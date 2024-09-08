@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/constants/nav_items_list.dart';
 import '../../../../core/utils/app_colors.dart';
 import 'header_desktop.dart';
 import 'header_mobile.dart';
@@ -19,7 +20,7 @@ class HomeAppBar extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.w),
         ),
         color: const Color(
-          AppColors.kSecondaryColor,
+          AppColors.kAppBarColor,
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.w),
@@ -28,7 +29,7 @@ class HomeAppBar extends StatelessWidget {
             children: [
               const ImageLogo(),
               const Spacer(),
-              if (ScreenUtil().screenWidth <= 690)
+              if (ScreenUtil().screenWidth <= kScreenWidth)
                 const HeaderMobile()
               else
                 const HeaderDesktop()
@@ -39,4 +40,3 @@ class HomeAppBar extends StatelessWidget {
     );
   }
 }
-

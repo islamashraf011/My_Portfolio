@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:portfolio/core/utils/app_colors.dart';
 
 import 'animated_bird_widget.dart';
 import 'name_text_widget.dart';
@@ -10,7 +11,7 @@ class ProfileMobileSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color(0xff021a3b),
+      color: const Color(AppColors.kHeaderColor),
       height: 300.h,
       child: const Padding(
         padding: EdgeInsets.only(left: 20),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/core/constants/nav_items_list.dart';
 import 'package:portfolio/features/home/presentation/widgets/profile_desktop_section.dart';
+import 'about_me_section.dart';
 import 'home_app_bar.dart';
 import 'profile_mobile_section.dart';
 
@@ -17,6 +18,7 @@ class HomeViewBody extends StatelessWidget {
           const ProfileMobileSection()
         else
           const ProfileDesktopSection(),
+        const AboutMeSection(),
       ],
     );
   }
