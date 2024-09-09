@@ -13,9 +13,9 @@ class ProfileMobileSection extends StatelessWidget {
     return Container(
       color: const Color(AppColors.kHeaderColor),
       height: 300.h,
-      child: const Padding(
-        padding: EdgeInsets.only(left: 20),
-        child: Column(
+      child: Padding(
+        padding: EdgeInsets.only(left: 20.w),
+        child: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AnimatedBirdWidget(isMobile: true),

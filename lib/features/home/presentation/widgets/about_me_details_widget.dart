@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/app_text_styles.dart';
 
 class AboutMeDetailsWidget extends StatelessWidget {
@@ -10,7 +10,7 @@ class AboutMeDetailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
+      padding:  EdgeInsets.symmetric(horizontal: 30.w),
       child: Align(
         alignment: Alignment.centerLeft,
         child: RichText(

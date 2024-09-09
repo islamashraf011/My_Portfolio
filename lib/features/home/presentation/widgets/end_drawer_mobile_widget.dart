@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/constants/nav_items_list.dart';
 import '../../../../core/utils/app_colors.dart';
@@ -11,7 +12,7 @@ class EndDrawerMobileWidget extends StatelessWidget {
     return Drawer(
       backgroundColor: const Color(AppColors.kPrimaryColor).withOpacity(0.8),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
+        padding:  EdgeInsets.symmetric(horizontal: 15.w),
         child: ListView(
           children: [
             IconButton(

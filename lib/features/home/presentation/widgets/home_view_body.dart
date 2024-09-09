@@ -4,6 +4,7 @@ import 'package:portfolio/core/constants/nav_items_list.dart';
 import 'package:portfolio/features/home/presentation/widgets/profile_desktop_section.dart';
 import 'about_me_section.dart';
 import 'home_app_bar.dart';
+import 'my_skills_section.dart';
 import 'profile_mobile_section.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -19,7 +20,10 @@ class HomeViewBody extends StatelessWidget {
         else
           const ProfileDesktopSection(),
         const AboutMeSection(),
+        const MySkillsSection(),
       ],
     );
   }
 }
+
+
