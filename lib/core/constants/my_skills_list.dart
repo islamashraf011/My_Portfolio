@@ -1,0 +1,16 @@
+const List<String> mySkills = [
+  'UI/UX Design',
+  'Navigation',
+  'RESTful APIs Integration',
+  'Local Data Storage',
+  'Firebase Integration',
+  'Flutter Fundamentals',
+  'Responsive UI',
+  'Solid Principles',
+  'Clean Architecture',
+  'Git & Github',
+  'OOP',
+  'Animation',
+  'Design Pattern',
+  'MVVM',
+];

@@ -17,6 +17,9 @@ class MySkillsSection extends StatelessWidget {
           firstText: 'My',
           secText: ' Skills',
         ),
+        SizedBox(
+          height: 15.h,
+        ),
         const MySkillsDetailsWidget(),
       ],
     );
