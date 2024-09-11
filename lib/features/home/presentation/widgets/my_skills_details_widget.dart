@@ -23,7 +23,7 @@ class MySkillsDetailsWidget extends StatelessWidget {
         mainAxisSpacing: 10,
       ),
       itemBuilder: (context, index) => Container(
-        decoration: mySkillsDecoration,
+        decoration: kMySkillsDecoration,
         child: Center(
           child: Text(
             mySkills[index],
