@@ -10,26 +10,24 @@ class MySkillsDetailsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: checkIsMobileScreen() ? 340 : 250,
-      child: GridView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: mySkills.length,
-        padding: EdgeInsets.symmetric(
-            horizontal: checkIsMobileScreen() ? 8.w : 30.w),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: checkIsMobileScreen() ? 2 : 4,
-          childAspectRatio: checkIsMobileScreen() ? 5.7 : 6,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-        ),
-        itemBuilder: (context, index) => Container(
-          decoration: mySkillsDecoration,
-          child: Center(
-            child: Text(
-              mySkills[index],
-              style: AppTextStyles.textNormal16(),
-            ),
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: mySkills.length,
+      padding:
+          EdgeInsets.symmetric(horizontal: checkIsMobileScreen() ? 8.w : 30.w),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: checkIsMobileScreen() ? 2 : 4,
+        childAspectRatio: checkIsMobileScreen() ? 5 : 6,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+      ),
+      itemBuilder: (context, index) => Container(
+        decoration: mySkillsDecoration,
+        child: Center(
+          child: Text(
+            mySkills[index],
+            style: AppTextStyles.textNormal16(),
           ),
         ),
       ),

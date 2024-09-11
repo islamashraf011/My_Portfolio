@@ -13,7 +13,7 @@ class MyProjectsSection extends StatelessWidget {
           height: 15.h,
         ),
         const CustomHeadLineTextWidget(
-          firstText: 'My',
+          firstText: 'My ',
           secText: 'Projects',
         ),
       ],

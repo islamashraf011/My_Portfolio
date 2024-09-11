@@ -13,16 +13,22 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        const HomeAppBar(),
-        if (ScreenUtil().screenWidth <= kScreenWidth)
-          const ProfileMobileSection()
-        else
-          const ProfileDesktopSection(),
-        const AboutMeSection(),
-        const MySkillsSection(),
-        const MyProjectsSection(),
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Column(
+            children: [
+              const HomeAppBar(),
+              if (ScreenUtil().screenWidth <= kScreenWidth)
+                const ProfileMobileSection()
+              else
+                const ProfileDesktopSection(),
+              const AboutMeSection(),
+              const MySkillsSection(),
+              const MyProjectsSection(),
+            ],
+          ),
+        ),
       ],
     );
   }
