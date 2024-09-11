@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/components/custom_head_line_text_widget.dart';
+import 'my_projects_details_widget.dart';
 
 class MyProjectsSection extends StatelessWidget {
   const MyProjectsSection({super.key});
@@ -16,7 +17,17 @@ class MyProjectsSection extends StatelessWidget {
           firstText: 'My ',
           secText: 'Projects',
         ),
+        SizedBox(
+          height: 15.h,
+        ),
+        const MyProjectsDetailsWidget()
       ],
     );
   }
 }
+
+
+
+
+
+
