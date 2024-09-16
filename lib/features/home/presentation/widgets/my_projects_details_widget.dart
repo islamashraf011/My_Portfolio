@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:portfolio/core/constants/my_projects_list.dart';
 import 'package:portfolio/features/home/presentation/widgets/custom_project_card_widget.dart';
-
 import '../../../../core/constants/nav_items_list.dart';
 
 class MyProjectsDetailsWidget extends StatelessWidget {
@@ -12,7 +12,7 @@ class MyProjectsDetailsWidget extends StatelessWidget {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: 6,
+      itemCount: myProjects.length,
       padding:
           EdgeInsets.symmetric(horizontal: checkIsMobileScreen() ? 75.w : 50.w),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -21,7 +21,9 @@ class MyProjectsDetailsWidget extends StatelessWidget {
         crossAxisSpacing: 10.w,
         mainAxisSpacing: 20.h,
       ),
-      itemBuilder: (context, index) => const CustomProjectCardWidget(),
+      itemBuilder: (context, index) => CustomProjectCardWidget(
+        projectModel: myProjects[index],
+      ),
     );
   }
 
