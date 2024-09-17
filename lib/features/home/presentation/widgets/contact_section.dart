@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio/core/constants/contact_info_list.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactSection extends StatelessWidget {
   const ContactSection({super.key});
@@ -18,13 +19,20 @@ class ContactSection extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                FontAwesomeIcons.instagram,
-                color: Colors.red,
+            for (int i = 0; i < contactIcons.length; i++)
+              IconButton(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                onPressed: () async {
+                  await launchUrl(
+                    Uri.parse(
+                      contactUrl[i],
+                    ),
+                  );
+                },
+                icon: Icon(
+                  contactIcons[i],
+                ),
               ),
-            ),
           ],
         ),
         SizedBox(
