@@ -7,7 +7,8 @@ import 'header_mobile.dart';
 import 'image_logo.dart';
 
 class HomeAppBar extends StatelessWidget {
-  const HomeAppBar({super.key});
+  const HomeAppBar({super.key, required this.controller});
+  final PageController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,9 @@ class HomeAppBar extends StatelessWidget {
               if (ScreenUtil().screenWidth <= kScreenWidth)
                 const HeaderMobile()
               else
-                const HeaderDesktop()
+                HeaderDesktop(
+                  controller: controller,
+                )
             ],
           ),
         ),

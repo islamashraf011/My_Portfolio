@@ -14,12 +14,17 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final PageController controller = PageController();
+
     return CustomScrollView(
+      controller: controller,
       slivers: [
         SliverToBoxAdapter(
           child: Column(
             children: [
-              const HomeAppBar(),
+              HomeAppBar(
+                controller: controller,
+              ),
               if (ScreenUtil().screenWidth <= kScreenWidth)
                 const ProfileMobileSection()
               else
