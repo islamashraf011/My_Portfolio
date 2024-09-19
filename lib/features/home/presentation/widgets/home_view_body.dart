@@ -10,12 +10,11 @@ import 'my_skills_section.dart';
 import 'profile_mobile_section.dart';
 
 class HomeViewBody extends StatelessWidget {
-  const HomeViewBody({super.key});
+  const HomeViewBody({super.key, required this.controller});
+  final PageController controller;
 
   @override
   Widget build(BuildContext context) {
-    final PageController controller = PageController();
-
     return CustomScrollView(
       controller: controller,
       slivers: [
