@@ -6,7 +6,8 @@ const List<String> contactUrl = [
   'https://wa.link/j5cyhn',
   'https://github.com/islamashraf011',
   'https://www.facebook.com/islamashraf011',
-  'https://mail.google.com/mail/u/0/?view=cm&fs=1&to=islamashraf1539@gmail.com'
+  'https://mail.google.com/mail/u/0/?view=cm&fs=1&to=islamashraf1539@gmail.com',
+  'https://drive.google.com/drive/folders/1e2asNnm_fbZeKaQgaU14c4iR1b8b2-CP?usp=drive_link',
 ];
 
 const List<IconData> contactIcons = [
@@ -15,6 +16,7 @@ const List<IconData> contactIcons = [
   FontAwesomeIcons.github,
   FontAwesomeIcons.facebook,
   Icons.mail_outline,
+  FontAwesomeIcons.filePdf,
 ];
 
 
