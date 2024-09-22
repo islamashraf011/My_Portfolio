@@ -84,4 +84,11 @@ abstract class AppTextStyles {
       ),
     );
   }
+
+  static textGreyNormal12() {
+    return const TextStyle(
+      fontSize: 12,
+      color: Colors.grey,
+    );
+  }
 }
