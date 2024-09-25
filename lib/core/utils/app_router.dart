@@ -1,5 +1,4 @@
 import 'package:go_router/go_router.dart';
-import 'package:portfolio/features/add_project/presentation/views/add_new_project_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 
 abstract class AppRouter {
@@ -9,10 +8,6 @@ abstract class AppRouter {
       GoRoute(
         path: '/',
         builder: (context, state) => const HomeView(),
-      ),
-      GoRoute(
-        path: addNewProjectView,
-        builder: (context, state) => const AddNewProjectView(),
       ),
     ],
   );

@@ -5,9 +5,8 @@ class ImageLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 50,
-      width: 50,
+    return AspectRatio(
+      aspectRatio: 5 / 4,
       child: Image.asset(
         "assets/images/bird.png",
         fit: BoxFit.fill,
