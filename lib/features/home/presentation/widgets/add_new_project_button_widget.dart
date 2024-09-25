@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
-import 'package:portfolio/core/utils/app_router.dart';
 import '../../../../core/constants/constant.dart';
 import '../../../../core/utils/app_text_styles.dart';
+import '../../../add_project/presentation/views/add_new_project_view.dart';
 
 class AddNewProjectButtonWidget extends StatelessWidget {
   const AddNewProjectButtonWidget({
@@ -14,7 +13,13 @@ class AddNewProjectButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(AppRouter.addNewProjectView);
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) {
+            return const AddNewProjectView();
+          },
+        );
       },
       child: Container(
         decoration: kProjectCardDecoration,
