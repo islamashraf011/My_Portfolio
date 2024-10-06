@@ -20,12 +20,16 @@ class AddNewProjectViewBody extends StatelessWidget {
         SizedBox(
           height: 15.h,
         ),
-        CustomTextButton(
-          title: 'Add',
-          backgroundColor: Colors.green[900],
-          height: 40.h,
-          width: 100.w,
-          onPressed: () {},
+        Padding(
+          padding:
+              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          child: CustomTextButton(
+            title: 'Add',
+            backgroundColor: Colors.green[900],
+            height: 40.h,
+            width: 100.w,
+            onPressed: () {},
+          ),
         ),
       ],
     );
