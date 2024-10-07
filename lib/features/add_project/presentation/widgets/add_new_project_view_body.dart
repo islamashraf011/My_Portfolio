@@ -37,7 +37,7 @@ class _AddNewProjectViewBodyState extends State<AddNewProjectViewBody> {
               controller: textController[i],
               hintText: hintText[i],
               clearText: () {
-                textController.clear();
+                textController[i].clear();
               },
             ),
           SizedBox(
@@ -62,6 +62,3 @@ class _AddNewProjectViewBodyState extends State<AddNewProjectViewBody> {
     }
   }
 }
-
-
-
