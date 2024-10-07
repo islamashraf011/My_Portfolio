@@ -9,20 +9,22 @@ class CustomTextFormFieldWidget extends StatelessWidget {
     this.onChanged,
     this.onSaved,
     this.maxLines,
+    this.clearText,
+    this.controller,
   });
   final String hintText;
   final Function(String)? onChanged;
   final Function(String?)? onSaved;
   final int? maxLines;
+  final Function()? clearText;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController textController = TextEditingController();
-
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 10.w),
       child: TextFormField(
-        controller: textController,
+        controller: controller,
         maxLines: maxLines,
         onChanged: onChanged,
         onSaved: onSaved,
@@ -35,9 +37,7 @@ class CustomTextFormFieldWidget extends StatelessWidget {
           hintText: hintText,
           hintStyle: AppTextStyles.textGreyNormal12(),
           suffixIcon: IconButton(
-            onPressed: () {
-              textController.clear();
-            },
+            onPressed: clearText,
             icon: const Icon(
               Icons.clear,
               size: 16,
