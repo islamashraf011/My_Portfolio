@@ -8,18 +8,19 @@ class CustomTextFormFieldWidget extends StatelessWidget {
     required this.hintText,
     this.onChanged,
     this.onSaved,
-    this.maxLines,
     this.clearText,
     this.controller,
     required this.index,
+    this.isPassword = false,
   });
   final String hintText;
   final Function(String)? onChanged;
   final Function(String?)? onSaved;
-  final int? maxLines;
+
   final Function()? clearText;
   final TextEditingController? controller;
   final int index;
+  final bool isPassword;
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +28,14 @@ class CustomTextFormFieldWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 10.w),
       child: TextFormField(
         validator: (data) {
-          if (index < 3 && data!.isEmpty) {
+          if (index < 3 || index > 4 && data!.isEmpty) {
             return 'field is required';
           }
           return null;
         },
+        obscureText: isPassword,
         controller: controller,
-        maxLines: maxLines,
+        maxLines: 1,
         onChanged: onChanged,
         onSaved: onSaved,
         textAlign: TextAlign.justify,

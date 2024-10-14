@@ -4,4 +4,6 @@ const List<String> hintText = [
   'Image Url',
   'Amazon Store Url',
   'Google Play Url',
+  'Email Address (Admin)',
+  'Password',
 ];

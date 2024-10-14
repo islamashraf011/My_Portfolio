@@ -37,6 +37,7 @@ class _AddNewProjectViewBodyState extends State<AddNewProjectViewBody> {
           const AddNewProjectAppBar(),
           for (int i = 0; i < hintText.length; i++)
             CustomTextFormFieldWidget(
+              isPassword: i == 6 ? true : false,
               index: i,
               controller: textController[i],
               hintText: hintText[i],
@@ -50,10 +51,9 @@ class _AddNewProjectViewBodyState extends State<AddNewProjectViewBody> {
           AddActionButtonWidget(
             isLoading: isLoading,
             onPressed: () {
-              isLoading = true;
-              setState(() {});
-
               if (formKey.currentState!.validate()) {
+                isLoading = true;
+                setState(() {});
                 Future.delayed(
                   const Duration(seconds: 5),
                   () {
