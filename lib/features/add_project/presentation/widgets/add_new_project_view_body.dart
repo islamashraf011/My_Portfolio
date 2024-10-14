@@ -14,6 +14,7 @@ class AddNewProjectViewBody extends StatefulWidget {
 
 class _AddNewProjectViewBodyState extends State<AddNewProjectViewBody> {
   late List<TextEditingController> textController;
+  GlobalKey<FormState> formKey = GlobalKey();
   @override
   void initState() {
     generateListTextEditingController();
@@ -29,11 +30,13 @@ class _AddNewProjectViewBodyState extends State<AddNewProjectViewBody> {
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: formKey,
       child: ListView(
         children: [
           const AddNewProjectAppBar(),
           for (int i = 0; i < hintText.length; i++)
             CustomTextFormFieldWidget(
+              index: i,
               controller: textController[i],
               hintText: hintText[i],
               clearText: () {
@@ -43,7 +46,13 @@ class _AddNewProjectViewBodyState extends State<AddNewProjectViewBody> {
           SizedBox(
             height: 15.h,
           ),
-          const AddActionButtonWidget(),
+          AddActionButtonWidget(
+            onPressed: () {
+              if (formKey.currentState!.validate()) {
+                print('test');
+              }
+            },
+          ),
         ],
       ),
     );

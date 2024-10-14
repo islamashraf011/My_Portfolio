@@ -4,9 +4,9 @@ import '../../../../core/components/custom_text_button.dart';
 
 class AddActionButtonWidget extends StatelessWidget {
   const AddActionButtonWidget({
-    super.key,
+    super.key, this.onPressed,
   });
-
+  final Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -17,7 +17,7 @@ class AddActionButtonWidget extends StatelessWidget {
         backgroundColor: Colors.green[900],
         height: 40.h,
         width: 100.w,
-        onPressed: () {},
+        onPressed: onPressed,
       ),
     );
   }

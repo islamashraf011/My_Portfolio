@@ -11,6 +11,7 @@ class CustomTextFormFieldWidget extends StatelessWidget {
     this.maxLines,
     this.clearText,
     this.controller,
+    required this.index,
   });
   final String hintText;
   final Function(String)? onChanged;
@@ -18,12 +19,19 @@ class CustomTextFormFieldWidget extends StatelessWidget {
   final int? maxLines;
   final Function()? clearText;
   final TextEditingController? controller;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 10.w),
       child: TextFormField(
+        validator: (data) {
+          if (index < 3 && data!.isEmpty) {
+            return 'field is required';
+          }
+          return null;
+        },
         controller: controller,
         maxLines: maxLines,
         onChanged: onChanged,
