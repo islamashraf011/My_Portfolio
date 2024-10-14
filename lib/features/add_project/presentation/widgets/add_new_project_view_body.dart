@@ -15,6 +15,7 @@ class AddNewProjectViewBody extends StatefulWidget {
 class _AddNewProjectViewBodyState extends State<AddNewProjectViewBody> {
   late List<TextEditingController> textController;
   GlobalKey<FormState> formKey = GlobalKey();
+  bool isLoading = false;
   @override
   void initState() {
     generateListTextEditingController();
@@ -47,9 +48,23 @@ class _AddNewProjectViewBodyState extends State<AddNewProjectViewBody> {
             height: 15.h,
           ),
           AddActionButtonWidget(
+            isLoading: isLoading,
             onPressed: () {
+              isLoading = true;
+              setState(() {});
+
               if (formKey.currentState!.validate()) {
-                print('test');
+                Future.delayed(
+                  const Duration(seconds: 5),
+                  () {
+                    print('testtesttes');
+                    setState(
+                      () {
+                        isLoading = false;
+                      },
+                    );
+                  },
+                );
               }
             },
           ),
