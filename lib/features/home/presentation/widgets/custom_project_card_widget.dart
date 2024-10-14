@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/features/home/data/project_model.dart';
-
 import '../../../../core/constants/constant.dart';
 import 'custom_project_image_widget.dart';
 import 'custom_project_link_widget.dart';
@@ -12,18 +11,18 @@ class CustomProjectCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: 300,
-      // width: 250,
       decoration: kProjectCardDecoration,
-      child:  Column(
+      child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
           CustomProjectImageWidget(
             projectModel: projectModel,
           ),
-          CustomProjectNameWidget(projectModel: projectModel,),
-         const  Spacer(),
-         const CustomProjectLinkWidget(),
+          CustomProjectNameWidget(
+            projectModel: projectModel,
+          ),
+          const Spacer(),
+          const CustomProjectLinkWidget(),
         ],
       ),
     );

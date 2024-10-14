@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/features/home/data/project_model.dart';
 import '../../../../core/utils/app_text_styles.dart';
 
@@ -12,9 +13,11 @@ class CustomProjectNameWidget extends StatelessWidget {
         projectModel.title,
         style: AppTextStyles.textNormalColor16(),
       ),
-      subtitle:  Text(
+      subtitle: Text(
+        style: TextStyle(fontSize: 14.r, height: 1.5),
+        maxLines: 2,
         textAlign: TextAlign.justify,
-      projectModel.description,
+        projectModel.description,
       ),
     );
   }

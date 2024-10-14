@@ -10,7 +10,7 @@ class AboutMeDetailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: 30.w),
+      padding: EdgeInsets.symmetric(horizontal: 30.w),
       child: Align(
         alignment: Alignment.centerLeft,
         child: RichText(
@@ -29,11 +29,11 @@ class AboutMeDetailsWidget extends StatelessWidget {
                     '  Dedicated and results-oriented Junior Flutter Developer with ',
               ),
               TextSpan(
-                text: '1 year ',
+                text: 'experience ',
                 style: AppTextStyles.textNormalColor16(),
               ),
               const TextSpan(
-                text: 'of experience and strong foundation in ',
+                text: 'and strong foundation in ',
               ),
               TextSpan(
                 text: 'Dart ',

@@ -18,7 +18,7 @@ class MyProjectsDetailsWidget extends StatelessWidget {
           EdgeInsets.symmetric(horizontal: checkIsMobileScreen() ? 75.w : 50.w),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: checkIsMobileScreen() ? 1 : 3,
-        childAspectRatio: checkIsMobileScreen() ? 0.7 : 0.9,
+        childAspectRatio: checkIsMobileScreen() ? 0.7 : (10.0 / 15.0).r,
         crossAxisSpacing: 10.w,
         mainAxisSpacing: 20.h,
       ),
