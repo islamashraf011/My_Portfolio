@@ -23,7 +23,7 @@ class CustomProjectLinkWidget extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: 30.r,
+            width: 20.r,
           ),
           IconButton(
             padding: EdgeInsets.zero,

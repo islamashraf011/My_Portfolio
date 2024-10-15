@@ -28,9 +28,12 @@ class CustomTextFormFieldWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 10.w),
       child: TextFormField(
         validator: (data) {
-          if (index < 3 || index > 4 && data!.isEmpty) {
-            return 'field is required';
+          if (index < 3 || index > 4) {
+            if (data!.isEmpty) {
+              return 'field is required';
+            }
           }
+
           return null;
         },
         obscureText: isPassword,
