@@ -11,3 +11,11 @@ BoxDecoration kProjectCardDecoration = BoxDecoration(
   borderRadius: BorderRadius.circular(8.r),
   color: const Color(AppColors.kHeaderColor),
 );
+
+const String kAppName = 'appName';
+const String kDescription = 'description';
+const String kAmazonLink = 'amazonLink';
+const String kGoogleLink = 'googleLink';
+const String kImageUrl = 'imageUrl';
+const String kCreateAt = 'createAt';
+const String kId = 'id';

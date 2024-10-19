@@ -10,7 +10,7 @@ class CustomProjectNameWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
-        projectModel.title,
+        projectModel.appName,
         style: AppTextStyles.textNormalColor16(),
       ),
       subtitle: Text(
