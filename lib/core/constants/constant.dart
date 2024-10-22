@@ -19,3 +19,4 @@ const String kGoogleLink = 'googleLink';
 const String kImageUrl = 'imageUrl';
 const String kCreateAt = 'createAt';
 const String kId = 'id';
+const String kCollectionPath = 'projects';
