@@ -26,9 +26,29 @@ class ProjectCubit extends Cubit<ProjectState> {
       );
     } catch (e) {
       emit(
-        ProjectFailureState(
-          errMessage: 'Failed, Please Try Again',
-        ),
+        ProjectFailureState(errMessage: 'Failed, Please Try Again'),
+      );
+    }
+  }
+
+  void fetchAllProjects() {
+    emit(ProjectLoadingState());
+    try {
+      projects.orderBy(kCreateAt).snapshots().listen(
+        (event) {
+          List<ProjectModel> projectsList = [];
+
+          for (var doc in event.docs) {
+            projectsList.add(ProjectModel.fromjson(doc));
+          }
+          emit(
+            ProjectSuccessState(projectList: projectsList),
+          );
+        },
+      );
+    } catch (e) {
+      emit(
+        ProjectFailureState(errMessage: 'Failed, Please Try Again'),
       );
     }
   }
