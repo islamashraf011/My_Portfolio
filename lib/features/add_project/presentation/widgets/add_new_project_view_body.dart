@@ -78,6 +78,7 @@ class AddNewProjectViewBody extends StatelessWidget {
         amazonUrl: textController[3].text,
         googleUrl: textController[4].text,
         id: textController[5].text,
+        createAt: DateTime.now().toString(),
       ),
     );
 

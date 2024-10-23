@@ -21,7 +21,7 @@ class ProjectCubit extends Cubit<ProjectState> {
           kAmazonLink: projectModel.amazonUrl,
           kGoogleLink: projectModel.googleUrl,
           kImageUrl: projectModel.imgUrl,
-          kCreateAt: DateTime.now(),
+          kCreateAt: projectModel.createAt,
         },
       );
     } catch (e) {
