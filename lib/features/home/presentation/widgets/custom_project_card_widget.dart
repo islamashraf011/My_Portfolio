@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:portfolio/features/add_project/presentation/manager/project_cubit/project_cubit.dart';
 import 'package:portfolio/features/home/data/project_model.dart';
 import '../../../../core/constants/constant.dart';
+import '../views/check_login_process_view.dart';
 import 'custom_project_image_widget.dart';
 import 'custom_project_link_widget.dart';
 import 'custom_project_name_widget.dart';
 
 class CustomProjectCardWidget extends StatelessWidget {
-  const CustomProjectCardWidget({super.key, required this.projectModel, required this.projectId});
+  const CustomProjectCardWidget(
+      {super.key, required this.projectModel, required this.projectId});
   final ProjectModel projectModel;
   final String? projectId;
   @override
@@ -37,9 +37,18 @@ class CustomProjectCardWidget extends StatelessWidget {
         Positioned(
           child: IconButton(
             onPressed: () {
-              BlocProvider.of<ProjectCubit>(context).deleteProject(
-                projectId: projectId!,
+              showDialog(
                 context: context,
+                barrierDismissible: false,
+                builder: (context) {
+                  // to Show SnackBar on the Dialog i Should wrap it by Scaffold
+                  return Scaffold(
+                    backgroundColor: Colors.transparent,
+                    body: CheckLoginProcessView(
+                      projectId: projectId,
+                    ),
+                  );
+                },
               );
             },
             icon: const Icon(
