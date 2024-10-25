@@ -52,6 +52,7 @@ class AddNewProjectViewBody extends StatelessWidget {
             },
             builder: (context, state) {
               return AddActionButtonWidget(
+                text: 'Add',
                 isLoading: isLoading,
                 onPressed: () async {
                   if (formKey.currentState!.validate()) {

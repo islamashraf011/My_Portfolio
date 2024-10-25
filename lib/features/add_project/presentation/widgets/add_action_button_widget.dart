@@ -7,9 +7,11 @@ class AddActionButtonWidget extends StatelessWidget {
     super.key,
     this.onPressed,
     required this.isLoading,
+    required this.text,
   });
   final Function()? onPressed;
   final bool isLoading;
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,7 +22,7 @@ class AddActionButtonWidget extends StatelessWidget {
               child: CircularProgressIndicator(),
             )
           : CustomTextButton(
-              title: 'Add',
+              title: text,
               backgroundColor: Colors.green[900],
               height: 40.h,
               width: 100.w,
