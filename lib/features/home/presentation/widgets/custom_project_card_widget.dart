@@ -22,7 +22,9 @@ class CustomProjectCardWidget extends StatelessWidget {
             projectModel: projectModel,
           ),
           const Spacer(),
-          const CustomProjectLinkWidget(),
+          CustomProjectLinkWidget(
+            projectModel: projectModel,
+          ),
         ],
       ),
     );
