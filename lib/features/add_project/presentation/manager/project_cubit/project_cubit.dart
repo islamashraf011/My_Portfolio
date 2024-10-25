@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio/core/components/show_snack_bar_widget.dart';
 import 'package:portfolio/core/constants/constant.dart';
 import 'package:portfolio/features/home/data/project_model.dart';
 part 'project_state.dart';
@@ -15,7 +16,7 @@ class ProjectCubit extends Cubit<ProjectState> {
     try {
       await projects.add(
         {
-          kId: projectModel.id,
+          kId: projectModel.adminAccount,
           kAppName: projectModel.appName,
           kDescription: projectModel.description,
           kAmazonLink: projectModel.amazonUrl,
@@ -37,12 +38,15 @@ class ProjectCubit extends Cubit<ProjectState> {
       projects.orderBy(kCreateAt).snapshots().listen(
         (event) {
           List<ProjectModel> projectsList = [];
+          List<String> projectsId = [];
 
           for (var doc in event.docs) {
             projectsList.add(ProjectModel.fromjson(doc));
+            projectsId.add(doc.id);
           }
           emit(
-            ProjectSuccessState(projectList: projectsList),
+            ProjectSuccessState(
+                projectList: projectsList, projectsId: projectsId),
           );
         },
       );
@@ -50,6 +54,15 @@ class ProjectCubit extends Cubit<ProjectState> {
       emit(
         ProjectFailureState(errMessage: 'Failed, Please Try Again'),
       );
+    }
+  }
+
+  void deleteProject({required String projectId, required context}) {
+    try {
+      projects.doc(projectId).delete();
+      showSnackBar(context, 'Project Deleted');
+    } catch (e) {
+      showSnackBar(context, 'Failed, Please try again');
     }
   }
 }

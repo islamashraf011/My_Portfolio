@@ -9,8 +9,9 @@ final class ProjectLoadingState extends ProjectState {}
 
 final class ProjectSuccessState extends ProjectState {
   final List<ProjectModel> projectList;
+  final List<String> projectsId;
 
-  ProjectSuccessState({required this.projectList});
+  ProjectSuccessState({required this.projectsId, required this.projectList});
 }
 
 final class ProjectFailureState extends ProjectState {

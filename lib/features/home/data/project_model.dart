@@ -6,7 +6,7 @@ class ProjectModel {
   final String description;
   final String? amazonUrl;
   final String? googleUrl;
-  final String? id;
+  final String? adminAccount;
   final String? createAt;
 
   ProjectModel({
@@ -15,7 +15,7 @@ class ProjectModel {
     required this.description,
     this.amazonUrl,
     this.googleUrl,
-    this.id,
+    this.adminAccount,
     this.createAt,
   });
   factory ProjectModel.fromjson(json) {
@@ -25,7 +25,7 @@ class ProjectModel {
       imgUrl: json[kImageUrl],
       amazonUrl: json[kAmazonLink],
       googleUrl: json[kGoogleLink],
-      id: json[kId],
+      adminAccount: json[kId],
       createAt: json[kCreateAt],
     );
   }
