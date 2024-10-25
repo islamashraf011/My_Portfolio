@@ -18,6 +18,7 @@ class MyProjectsDetailsWidget extends StatefulWidget {
 
 class _MyProjectsDetailsWidgetState extends State<MyProjectsDetailsWidget> {
   List<ProjectModel> myProjects = [];
+  List<String> projectsId = [];
   bool isLoading = false;
   @override
   void initState() {
@@ -41,6 +42,7 @@ class _MyProjectsDetailsWidgetState extends State<MyProjectsDetailsWidget> {
         if (state is ProjectSuccessState) {
           isLoading = false;
           myProjects = state.projectList;
+          projectsId = state.projectsId;
         }
         if (state is ProjectFailureState) {
           showSnackBar(context, state.errMessage);
@@ -67,6 +69,7 @@ class _MyProjectsDetailsWidgetState extends State<MyProjectsDetailsWidget> {
                     )
                   : CustomProjectCardWidget(
                       projectModel: myProjects[index],
+                      projectId: projectsId[index],
                     );
             } else {
               return const AddNewProjectButtonWidget();
