@@ -42,11 +42,8 @@ class CustomProjectCardWidget extends StatelessWidget {
                 barrierDismissible: false,
                 builder: (context) {
                   // to Show SnackBar on the Dialog i Should wrap it by Scaffold
-                  return Scaffold(
-                    backgroundColor: Colors.transparent,
-                    body: CheckLoginProcessView(
-                      projectId: projectId,
-                    ),
+                  return CheckLoginProcessView(
+                    projectId: projectId,
                   );
                 },
               );
