@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/core/components/show_snack_bar_widget.dart';
 import 'package:portfolio/core/constants/hint_text_list.dart';
+import 'package:portfolio/features/add_project/presentation/manager/image_cubit/image_cubit.dart';
 import 'package:portfolio/features/add_project/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:portfolio/features/add_project/presentation/manager/project_cubit/project_cubit.dart';
 import 'package:portfolio/features/home/data/project_model.dart';
@@ -13,13 +14,14 @@ import 'add_new_project_app_bar.dart';
 
 class AddNewProjectViewBody extends StatelessWidget {
   const AddNewProjectViewBody({super.key});
-
   @override
   Widget build(BuildContext context) {
     List<TextEditingController> textController =
         generateListTextEditingController();
     GlobalKey<FormState> formKey = GlobalKey();
     bool isLoading = false;
+    var imageCubit = BlocProvider.of<ImageCubit>(context);
+    var loginCubit = BlocProvider.of<LoginCubit>(context);
     return Form(
       key: formKey,
       child: ListView(
@@ -34,6 +36,9 @@ class AddNewProjectViewBody extends StatelessWidget {
               clearText: () {
                 textController[i].clear();
               },
+              pickImage: () {
+                imageCubit.pickImage();
+              },
             ),
           SizedBox(
             height: 15.h,
@@ -42,24 +47,43 @@ class AddNewProjectViewBody extends StatelessWidget {
             listener: (context, state) {
               if (state is LoginLoadingState) {
                 isLoading = true;
-              } else if (state is LoginSuccessState) {
-                isLoading = false;
-                handleLoginSuccessState(context, textController);
               } else if (state is LoginFailureState) {
                 showSnackBar(context, state.errMessage);
                 isLoading = false;
               }
             },
             builder: (context, state) {
-              return AddActionButtonWidget(
-                text: 'Add',
-                isLoading: isLoading,
-                onPressed: () async {
-                  if (formKey.currentState!.validate()) {
-                    BlocProvider.of<LoginCubit>(context).loginProcess(
-                        email: textController[5].text,
-                        password: textController[6].text);
+              return BlocConsumer<ImageCubit, ImageState>(
+                listener: (context, state) {
+                  if (state is ImagePickedSuccessState) {
+                    textController[2].text = state.imagePath;
                   }
+                  if (state is ImageDownloadUrlSuccessState) {
+                    handleLoginSuccessState(
+                        context, textController, state.downloadUrl);
+                    isLoading = false;
+                  } else if (state is ImageFailureState) {
+                    showSnackBar(context, state.errMessage);
+                  }
+                },
+                builder: (context, state) {
+                  return AddActionButtonWidget(
+                    text: 'Add',
+                    isLoading: isLoading,
+                    onPressed: () async {
+                      if (formKey.currentState!.validate()) {
+                        // Start Login Process
+                        await loginCubit.loginProcess(
+                            email: textController[5].text,
+                            password: textController[6].text);
+
+                        // then Upload Image to Storage & get the Download Image Url
+                        if (context.mounted) {
+                          await imageCubit.uploadImageToStorage();
+                        }
+                      }
+                    },
+                  );
                 },
               );
             },
@@ -69,13 +93,13 @@ class AddNewProjectViewBody extends StatelessWidget {
     );
   }
 
-  void handleLoginSuccessState(
-      BuildContext context, List<TextEditingController> textController) {
+  void handleLoginSuccessState(BuildContext context,
+      List<TextEditingController> textController, String imageDownloadUrl) {
     BlocProvider.of<ProjectCubit>(context).addNewProject(
       projectModel: ProjectModel(
         appName: textController[0].text,
         description: textController[1].text,
-        imgUrl: textController[2].text,
+        imgUrl: imageDownloadUrl,
         amazonUrl: textController[3].text,
         googleUrl: textController[4].text,
         adminAccount: textController[5].text,
