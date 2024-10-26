@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/core/utils/app_colors.dart';
 import 'package:portfolio/core/utils/app_router.dart';
+import 'package:portfolio/features/add_project/presentation/manager/image_cubit/image_cubit.dart';
 import 'package:portfolio/features/add_project/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:portfolio/features/add_project/presentation/manager/project_cubit/project_cubit.dart';
 import 'firebase_options.dart';
@@ -41,6 +42,9 @@ class Portfolio extends StatelessWidget {
             ),
             BlocProvider(
               create: (context) => LoginCubit(),
+            ),
+            BlocProvider(
+              create: (context) => ImageCubit(),
             ),
           ],
           child: MaterialApp.router(

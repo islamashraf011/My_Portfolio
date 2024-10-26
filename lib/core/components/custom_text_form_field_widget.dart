@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../utils/app_text_styles.dart';
 
 class CustomTextFormFieldWidget extends StatelessWidget {
@@ -12,6 +13,7 @@ class CustomTextFormFieldWidget extends StatelessWidget {
     this.controller,
     required this.index,
     this.isPassword = false,
+    this.pickImage,
   });
   final String hintText;
   final Function(String)? onChanged;
@@ -21,6 +23,7 @@ class CustomTextFormFieldWidget extends StatelessWidget {
   final TextEditingController? controller;
   final int index;
   final bool isPassword;
+  final Function()? pickImage;
 
   @override
   Widget build(BuildContext context) {
@@ -49,13 +52,21 @@ class CustomTextFormFieldWidget extends StatelessWidget {
           focusedBorder: buildBorder(Colors.cyan),
           hintText: hintText,
           hintStyle: AppTextStyles.textGreyNormal12(),
-          suffixIcon: IconButton(
-            onPressed: clearText,
-            icon: const Icon(
-              Icons.clear,
-              size: 16,
-            ),
-          ),
+          suffixIcon: index == 2
+              ? IconButton(
+                  onPressed: pickImage,
+                  icon: const Icon(
+                    FontAwesomeIcons.image,
+                    size: 16,
+                  ),
+                )
+              : IconButton(
+                  onPressed: clearText,
+                  icon: const Icon(
+                    Icons.clear,
+                    size: 16,
+                  ),
+                ),
         ),
       ),
     );
