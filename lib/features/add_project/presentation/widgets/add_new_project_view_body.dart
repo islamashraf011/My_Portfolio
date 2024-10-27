@@ -68,6 +68,7 @@ class AddNewProjectViewBody extends StatelessWidget {
 
                     isLoading = false;
                   } else if (state is ImageFailureState) {
+                    isLoading = false;
                     showSnackBar(context, state.errMessage);
                   }
                 },
