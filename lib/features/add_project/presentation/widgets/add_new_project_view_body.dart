@@ -47,6 +47,10 @@ class AddNewProjectViewBody extends StatelessWidget {
             listener: (context, state) {
               if (state is LoginLoadingState) {
                 isLoading = true;
+              } else if (state is LoginSuccessState) {
+                // then Upload Image to Storage & get the Download Image Url
+
+                imageCubit.uploadImageToStorage();
               } else if (state is LoginFailureState) {
                 showSnackBar(context, state.errMessage);
                 isLoading = false;
@@ -61,6 +65,7 @@ class AddNewProjectViewBody extends StatelessWidget {
                   if (state is ImageDownloadUrlSuccessState) {
                     handleLoginSuccessState(
                         context, textController, state.downloadUrl);
+
                     isLoading = false;
                   } else if (state is ImageFailureState) {
                     showSnackBar(context, state.errMessage);
@@ -76,11 +81,6 @@ class AddNewProjectViewBody extends StatelessWidget {
                         await loginCubit.loginProcess(
                             email: textController[5].text,
                             password: textController[6].text);
-
-                        // then Upload Image to Storage & get the Download Image Url
-                        if (context.mounted) {
-                          await imageCubit.uploadImageToStorage();
-                        }
                       }
                     },
                   );

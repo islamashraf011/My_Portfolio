@@ -1,6 +1,6 @@
-import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 part 'image_state.dart';
@@ -11,16 +11,17 @@ class ImageCubit extends Cubit<ImageState> {
   // Get Reference to Storage Root
   Reference storageReference = FirebaseStorage.instance.ref().child('images');
 
-  String? pickedImagePath;
+  Uint8List? pickedImagePath;
   Future<void> pickImage() async {
     try {
       XFile? image = await imagePicker.pickImage(
         source: ImageSource.gallery,
       );
       if (image != null) {
-        pickedImagePath = image.path;
+        Uint8List imageConvertUrl = await image.readAsBytes();
+        pickedImagePath = imageConvertUrl;
         emit(
-          ImagePickedSuccessState(imagePath: pickedImagePath!),
+          ImagePickedSuccessState(imagePath: image.toString()),
         );
       } else {
         emit(
@@ -42,9 +43,7 @@ class ImageCubit extends Cubit<ImageState> {
       String uniqueImageName = DateTime.now().millisecondsSinceEpoch.toString();
       Reference referenceImageToUpload =
           storageReference.child(uniqueImageName);
-      await referenceImageToUpload.putFile(
-        File(pickedImagePath!),
-      );
+      await referenceImageToUpload.putData(pickedImagePath!);
 
       // Retrieve the download URL of the uploaded image
 

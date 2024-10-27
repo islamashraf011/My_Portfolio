@@ -18,10 +18,7 @@ class AddNewProjectButtonWidget extends StatelessWidget {
           barrierDismissible: false,
           builder: (context) {
             // to Show SnackBar on the Dialog i Should wrap it by Scaffold
-            return const Scaffold(
-              backgroundColor: Colors.transparent,
-              body: AddNewProjectView(),
-            );
+            return const AddNewProjectView();
           },
         );
       },
