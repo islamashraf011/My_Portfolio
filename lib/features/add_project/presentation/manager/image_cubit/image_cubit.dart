@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:portfolio/core/utils/check_connectivity_service.dart';
 part 'image_state.dart';
 
 class ImageCubit extends Cubit<ImageState> {
@@ -40,6 +41,12 @@ class ImageCubit extends Cubit<ImageState> {
     // Store the image in Storage
 
     try {
+      bool isConnected = await ConnectionCheck.checkInternetConnection();
+
+      if (isConnected == false) {
+        emit(ImageFailureState(errMessage: 'No Internet Connection'));
+        return;
+      }
       String uniqueImageName = DateTime.now().millisecondsSinceEpoch.toString();
       Reference referenceImageToUpload =
           storageReference.child(uniqueImageName);

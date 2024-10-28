@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/core/components/show_snack_bar_widget.dart';
 import 'package:portfolio/core/constants/constant.dart';
 import 'package:portfolio/features/home/data/project_model.dart';
+import '../../../../../core/utils/check_connectivity_service.dart';
 part 'project_state.dart';
 
 class ProjectCubit extends Cubit<ProjectState> {
@@ -57,8 +58,14 @@ class ProjectCubit extends Cubit<ProjectState> {
     }
   }
 
-  void deleteProject({required String projectId, required context}) {
+  void deleteProject({required String projectId, required context}) async {
     try {
+      bool isConnected = await ConnectionCheck.checkInternetConnection();
+
+      if (isConnected == false) {
+        emit(ProjectFailureState(errMessage: 'No Internet Connection'));
+        return;
+      }
       projects.doc(projectId).delete();
       showSnackBar(context, 'Project Deleted');
     } catch (e) {
